@@ -1,0 +1,27 @@
+
+/**
+ * Header
+ * -Logo
+ * -Nav-items
+ * Body
+ * -SearchComponent
+ * -RestaurantContainer [a lot of res cards whenever we see like 
+ *  make your code moduler i.e build seperate comp => so that we can reuse it]
+ *   -RestaurantCard
+ *   +image
+ *   +Name
+ *   +cuisins
+ *   +ratings,+delivery time
+ * Footer
+ * -Address
+ * -career
+ * links
+ * -copywrites
+ */
+ 
+
+ we have create dynamic by using
+ props => we can pass to the components dynamically through props
+ (passing an arguments into a function)
+ CONFIG DRIVEN UI => basically controlling our UI (api data comes from backend)
+ we've  CloudinaryImagesId  which uses CDN hosted RestaurantImages

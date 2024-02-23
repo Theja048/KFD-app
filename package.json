@@ -1,0 +1,36 @@
+{
+  "name": "kfdapp",
+  "version": "1.0.0",
+  "description": "online food delivery app",
+  "main": "app.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Theja048/KFD-app.git"
+  },
+  "keywords": [
+    "react",
+    "hooks"
+  ],
+  "author": "Ravitejaa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Theja048/KFD-app/issues"
+  },
+  "homepage": "https://github.com/Theja048/KFD-app#readme",
+  "devDependencies": {
+    "parcel": "^2.11.0",
+    "process": "^0.11.10"
+  },
+  "browserlists": {
+    "browserslist": "> 0.5%, last 2 versions, not dead"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

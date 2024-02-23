@@ -23,12 +23,17 @@
  we have create dynamic by using
  props => we can pass to the components dynamically through props
  (passing an arguments into a function)
- 
- //{resName,cuisine}  ==> (props)  =>valid
+
+ {
+    
+//{resName,cuisine}  ==> (props)  =>valid
 
 // here weve hardcoded to make restaurants call 1 by one 
 //but we have used map to iterate in functional way
 //key must be unique while using map  (not recommend index)
+
+ }                               
+ 
 
  CONFIG DRIVEN UI => basically controlling our UI (api data comes from backend)
  we've  CloudinaryImagesId  which uses CDN hosted RestaurantImages

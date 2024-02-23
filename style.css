@@ -1,6 +1,7 @@
 *{
     margin: 0px;
     padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .header{
@@ -14,7 +15,7 @@
 }
 
 .logo-app{
-    width: 50px;
+    width: 80px;
     
 }
 .nav-Items > ul{

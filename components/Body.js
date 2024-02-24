@@ -1,32 +1,29 @@
 import RestaurantCard from "../components/RestaurantCard";
-import resList from "../Utils/DataList";
+import { useState } from "react";
+ import resList from "../Utils/DataList";
 const Body = () => {
+const [listofRestarant, setlistofRestarant] = useState(resList)
+
+
+ 
     return(
         <div className="body">
           <div className="search">Search</div>
+          <button className="filter" onClick={ () =>{
+          const filterList = listofRestarant.filter( 
+              (res) =>res.info.avgRating > 4 )
+
+             setlistofRestarant(filterList)
+          }}>Filter</button>
+              
           <div className="Rest-container">
 
           {
-                resList.map( (restaurant) =>(
+                listofRestarant.map( (restaurant) =>(
                   <RestaurantCard key={restaurant.info.id} resData={restaurant} />
              ))}
           
-              {/* <RestaurantCard resData = {resList[0]} />
-              <RestaurantCard resData = {resList[1]} />
-              <RestaurantCard resData = {resList[2]} />
-              <RestaurantCard resData = {resList[3]} />
-              <RestaurantCard resData = {resList[4]} />
-              <RestaurantCard resData = {resList[5]} />
-              <RestaurantCard resData = {resList[6]} />
-              <RestaurantCard resData = {resList[7]} />
-              <RestaurantCard resData = {resList[8]} />
-              <RestaurantCard resData = {resList[9]} />
-              <RestaurantCard resData = {resList[10]} />
-              <RestaurantCard resData = {resList[11]} />
-              <RestaurantCard resData = {resList[12]} />
-              <RestaurantCard resData = {resList[13]} />
-              <RestaurantCard resData = {resList[14]} />
-              <RestaurantCard resData = {resList[15]} /> */}
+             
           </div>
         </div>
     )

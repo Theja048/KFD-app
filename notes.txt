@@ -25,7 +25,7 @@
  (passing an arguments into a function)
 
  {
-    
+
 //{resName,cuisine}  ==> (props)  =>valid
 
 // here weve hardcoded to make restaurants call 1 by one 
@@ -46,3 +46,11 @@
    import filename from "your path"
    2)
    export filename ex( export API_URL)
+
+   hooks: normal javascript functions given us by react that func has
+   super powers
+   2imp hooks: useState and useEffect
+   used to create state variable 
+   using useState we can modify UI automatically  render()
+   state variable updates react re renders the components...
+   using that we have done filter method modfication to our app top rated restaurants

@@ -4,8 +4,6 @@ import { useState } from "react";
 const Body = () => {
 const [listofRestarant, setlistofRestarant] = useState(resList)
 
-
- 
     return(
         <div className="body">
           <div className="search">Search</div>

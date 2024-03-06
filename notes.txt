@@ -54,3 +54,4 @@
    using useState we can modify UI automatically  render()
    state variable updates react re renders the components...
    using that we have done filter method modfication to our app top rated restaurants
+  

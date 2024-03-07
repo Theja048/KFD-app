@@ -1,51 +1,56 @@
 import { useEffect, useState } from "react";
 import { Shimmer } from "./Shimmer";
-
+import { useParams } from "react-router-dom";
+import { MENU_API } from "../Utils/constant";
 
 const RestaurantMenu = () => {
+	const [resInfo, setresInfo] = useState(null);
+	// const params = useParams()
+	// console.log(params)
+	const { resId } = useParams();
 
-const [resinfo,setresinfo] = useState(null)
-    useEffect( () =>{
-            fetechMenu();
-    },[]);
+	useEffect(() => {
+		fetchData();
+	}, []);
 
-    const fetechMenu = async () =>{
-        const data = await fetch(
-            "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.406498&lng=78.47724389999999&restaurantId=74646&catalog_qa=undefined&submitAction=ENTER"
-            );
-          const json = await data.json();
-          console.log(json);
-          setresinfo(json.data);
-    };
-    if(resinfo === null ) return <Shimmer />
+	const fetchData = async () => {
+		const data = await fetch(MENU_API + resId);
+		const json = await data.json();
+		console.log(json);
+		setresInfo(json.data);
+	};
+	if (resInfo === null) {
+		return <Shimmer />;
+	}
+	const { name, cuisines, areaName, sla, costForTwoMessage } =
+		resInfo?.cards[0]?.card?.card?.info;
 
-     const {name,cuisines,city,areaName,sla,costForTwoMessage
+	const { itemCards } =
+		resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+	console.log(itemCards);
+	return (
+		<div className="menu">
+			<h1>{name}</h1>
+			<h6>{cuisines.join(",")}</h6>
+			<h6>
+				{areaName},{sla.lastMileTravelString}
+			</h6>
 
-     } = resinfo?.cards[0]?.card?.card?.info;
-              
-    const {ItemsCards} = resinfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemcards;
-         console.log(ItemsCards);
-    return(
-     <div className="menu">
+			<h5>
+				{sla.slaString} - {costForTwoMessage}{" "}
+			</h5>
 
-                                     <h1>{ name}</h1>
-                            <p>{cuisines.join(", ")}</p>
-                     <p>{areaName}, {sla.lastMileTravelString}</p>
-                 <p>{sla.slaString} - {costForTwoMessage}</p> 
-{/*        
-                           <h1>{ resinfo?.cards[0]?.card?.card?.info?.name}</h1>
-                            <p>{resinfo?.cards[0]?.card?.card?.info?.cuisines.join(", ")}</p>
-                     <p>{resinfo?.cards[0]?.card?.card?.info?.areaName}, {resinfo?.cards[0]?.card?.card?.info?.sla.lastMileTravelString}</p>
-                 <p>{resinfo?.cards[0]?.card?.card?.info?.sla.slaString} {resinfo?.cards[0]?.card?.card?.info?.costForTwoMessage}</p>  */}
-       
-    
-
-        <ul>
-            <li>Biryani</li>
-            <li>Meals</li>
-            <li>BreakFast</li>
-        </ul>
-     </div>
-)
-}
+			<h1>Recommended</h1>
+			<ul>
+				{itemCards.map((items) => (
+					<li key={items?.card?.info?.id}>
+						{items?.card?.info?.name} - {" Rs."}
+						{items?.card?.info?.price / 100 ||
+							items?.card?.info?.defaultPrice / 100}{" "}
+					</li>
+				))}
+			</ul>
+		</div>
+	);
+};
 export default RestaurantMenu;

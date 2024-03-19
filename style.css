@@ -159,3 +159,8 @@ h6 {
 	text-decoration: none;
 	color: #4b4545;
 }
+
+.user {
+	padding: 10px;
+	border: 1px solid grey;
+}

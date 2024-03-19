@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Shimmer } from "./Shimmer";
 import { REST_URL } from "../Utils/constant";
 import "../style.css";
+import useOnlineStatus from "../Utils/useOnlineStatus";
 const Body = () => {
 	const [listofRestarant, setlistofRestarant] = useState([]);
 	const [searchText, setsearchText] = useState("");
@@ -14,9 +15,10 @@ const Body = () => {
 	}, []);
 
 	const fetchData = async () => {
-		const sdata = await fetch(REST_URL);
-		const json = await sdata.json();
+		const data = await fetch(REST_URL);
+		const json = await data.json();
 		console.log(json);
+		// console.log(REST_URL);
 
 		setlistofRestarant(
 			json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -25,6 +27,10 @@ const Body = () => {
 			json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
 		);
 	};
+
+	const onlineStatus = useOnlineStatus();
+	if (onlineStatus === false)
+		return <h1>Looks like you are offline, Check your internet connection</h1>;
 
 	return listofRestarant.length === 0 ? (
 		<Shimmer />

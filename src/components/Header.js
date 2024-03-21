@@ -1,16 +1,16 @@
-import { LOGO_URL } from "../Utils/constant";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../Utils/useOnlineStatus";
+import { LOGO_URL } from "../Utils/constant";
 
 const Header = () => {
 	const [btnName, setbtnName] = useState("Login");
 	const onlineStatus = useOnlineStatus();
 
 	return (
-		<div className="header">
+		<div className="flex">
 			<div className="logo">
-				<img className="logo-app" src={LOGO_URL} />
+				<img className="w-44" src={LOGO_URL} />
 			</div>
 
 			<div className="nav-Items">

@@ -2,37 +2,37 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../Utils/useOnlineStatus";
 import { LOGO_URL } from "../Utils/constant";
-
+import React from "react";
 const Header = () => {
 	const [btnName, setbtnName] = useState("Login");
 	const onlineStatus = useOnlineStatus();
 
 	return (
-		<div className="flex">
+		<div className="flex justify-between bg-slate-600 shadow-lg">
 			<div className="logo">
-				<img className="w-44" src={LOGO_URL} />
+				<img className="w-32" src={LOGO_URL} />
 			</div>
 
-			<div className="nav-Items">
-				<ul>
-					<li>onlineStatus:{onlineStatus ? "✅" : "🔴"}</li>
+			<div className="flex items-center  ">
+				<ul className="flex p-3 m-2.5 text-stone-50 font-sans text-lg">
+					<li className="px-4">onlineStatus:{onlineStatus ? "✅" : "🔴"}</li>
 					<button
-						className="login"
+						className="px-4"
 						onClick={() => {
 							btnName === "Login" ? setbtnName("Logout") : setbtnName("Login");
 						}}>
 						{btnName}
 					</button>
-					<li>
+					<li className="px-4">
 						<Link to={"/"}>Home</Link>{" "}
 					</li>
-					<li>
+					<li className="px-4">
 						<Link to={"/groceries"}>Grocery</Link>
 					</li>
-					<li>
+					<li className="px-4">
 						<Link to={"/about"}>About</Link>{" "}
 					</li>
-					<li>
+					<li className="px-4">
 						<Link to={"/contact"}>Contact Us</Link>
 					</li>
 				</ul>

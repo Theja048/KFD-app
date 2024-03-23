@@ -1,5 +1,5 @@
-import react from "react";
-class UserClass extends react.Component {
+import React from "react";
+class UserClass extends React.Component {
 	constructor(props) {
 		super(props);
 

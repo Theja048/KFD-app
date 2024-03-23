@@ -1,10 +1,11 @@
-import RestaurantCard from "../components/RestaurantCard";
 import { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Shimmer } from "./Shimmer";
 import { REST_URL } from "../Utils/constant";
-import "../style.css";
 import useOnlineStatus from "../Utils/useOnlineStatus";
+import RestaurantCard from "./RestaurantCard";
+
 const Body = () => {
 	const [listofRestarant, setlistofRestarant] = useState([]);
 	const [searchText, setsearchText] = useState("");
@@ -36,17 +37,17 @@ const Body = () => {
 		<Shimmer />
 	) : (
 		<div className="body">
-			<div className="filter">
-				<div className="search">
+			<div className="filter flex">
+				<div className="search m-4 p-4">
 					<input
 						type="text"
-						className="search-box"
+						className=" border  border-solid border-black "
 						value={searchText}
 						onChange={(e) => {
 							setsearchText(e.target.value);
 						}}></input>
 					<button
-						className="search-btn"
+						className=" bg-lime-600 px-3 py-1.5 rounded-md m-4 text-gray-50"
 						onClick={() => {
 							//filtr and update ui
 							// console.log(searchText)
@@ -56,21 +57,23 @@ const Body = () => {
 							);
 							setfilterList(filterList);
 						}}>
-						Serach
+						Search
 					</button>
 				</div>
-				<button
-					className="filter-btn"
-					onClick={() => {
-						const filterList = listofRestarant.filter(
-							(res) => res.info.avgRating > 4.2
-						);
-						setlistofRestarant(filterList);
-					}}>
-					Filter
-				</button>
+				<div className="search p-4 m-4 flex items-center  ">
+					<button
+						className="px-3.5 py-2 bg-indigo-900 rounded-lg text-gray-50 "
+						onClick={() => {
+							const filterList = listofRestarant.filter(
+								(res) => res.info.avgRating > 4.2
+							);
+							setlistofRestarant(filterList);
+						}}>
+						Filter
+					</button>
+				</div>
 			</div>
-			<div className="Rest-container">
+			<div className="flex flex-wrap">
 				{filterList?.map((restaurant) => (
 					<Link
 						className="no-underline"

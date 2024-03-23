@@ -1,5 +1,5 @@
 import { CDN_URL } from "../Utils/constant";
-
+import React from "react";
 const RestaurantCard = (props) => {
 	const { resData } = props;
 	// Ensure resData is defined
@@ -15,9 +15,15 @@ const RestaurantCard = (props) => {
 	} = resData.info;
 	const imgsrc = `${CDN_URL}${cloudinaryImageId}`;
 	return (
-		<div className="res-card">
-			{<img className="res-pic" src={imgsrc} alt="restaurant image" />}
-			<h3>{name}</h3>
+		<div className="m-3 p-3 w-[190px] rounded-lg bg-slate-100 hover:bg-gray-300">
+			{
+				<img
+					className="res-pic rounded-lg"
+					src={imgsrc}
+					alt="restaurant image"
+				/>
+			}
+			<h3 className="font-bold py-4 text-lg">{name}</h3>
 			<h4 className="cuisin">{cuisines.join(", ")}</h4>
 			<h6>{avgRatingString} stars</h6>
 			<h6>{sla.slaString}</h6>

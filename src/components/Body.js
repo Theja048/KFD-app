@@ -10,7 +10,7 @@ const Body = () => {
 	const [listofRestarant, setlistofRestarant] = useState([]);
 	const [searchText, setsearchText] = useState("");
 	const [filterList, setfilterList] = useState([]);
-
+	//console.log(listofRestarant);
 	useEffect(() => {
 		fetchData();
 	}, []);

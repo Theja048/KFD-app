@@ -2,16 +2,17 @@ import { Component } from "react";
 import User from "./User";
 import UserClass from "./UserClass";
 import React from "react";
+import userContext from "../Utils/userContext";
 class About extends Component {
 	constructor(props) {
 		super(props);
-		console.log("Parent Constructor");
+		//console.log("Parent Constructor");
 	}
 	componentDidMount() {
-		console.log("Parent Component did Mount");
+		//console.log("Parent Component did Mount");
 	}
 	render() {
-		console.log("Parent Render");
+		//console.log("Parent Render");
 		return (
 			<div>
 				<h1>Kiddo Food Delivery </h1>
@@ -20,7 +21,13 @@ class About extends Component {
 					<span>Efficiently and within Time without any delay or damage</span>
 				</h2>
 
-				<User name={"Teja (function)"} Location={"Hyderabad"} />
+				<div>
+					<userContext.Consumer>
+						{({ loggedInUser }) => (
+							<h1 className="text-lg font-bold">{loggedInUser}</h1>
+						)}
+					</userContext.Consumer>
+				</div>
 				<UserClass
 					name={"Kiddo (class base)"}
 					Location={"Hyderabad (class base)"}

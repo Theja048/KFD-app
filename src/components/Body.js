@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Shimmer } from "./Shimmer";
 import { REST_URL } from "../Utils/constant";
 import useOnlineStatus from "../Utils/useOnlineStatus";
 import RestaurantCard from "./RestaurantCard";
-
+import userContext from "../Utils/userContext";
 const Body = () => {
 	const [listofRestarant, setlistofRestarant] = useState([]);
 	const [searchText, setsearchText] = useState("");
 	const [filterList, setfilterList] = useState([]);
 	//console.log(listofRestarant);
+
 	useEffect(() => {
 		fetchData();
 	}, []);
@@ -33,6 +34,7 @@ const Body = () => {
 	if (onlineStatus === false)
 		return <h1>Looks like you are offline, Check your internet connection</h1>;
 
+	const { loggedInUser, setuserName } = useContext(userContext);
 	return listofRestarant.length === 0 ? (
 		<Shimmer />
 	) : (
@@ -71,6 +73,13 @@ const Body = () => {
 						}}>
 						Filter
 					</button>
+				</div>
+				<div className="search p-4 m-4 flex items-center   ">
+					<label className="p-1">UserName:</label>
+					<input
+						className="border border-black p-1"
+						onChange={(e) => setuserName(e.target.value)}
+					/>
 				</div>
 			</div>
 			<div className="flex flex-wrap">

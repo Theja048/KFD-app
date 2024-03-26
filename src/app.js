@@ -1,9 +1,9 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState, useContext, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import Body from "./components/Body";
+
 import Header from "./components/Header";
-import About from "./components/About";
+import userContext from "./Utils/userContext";
 import Error from "./components/Error";
 import ContactUs from "./components/ContactUs";
 import RestaurantMenu from "./components/RestaurantMenu";
@@ -11,12 +11,25 @@ import { Shimmer } from "./components/Shimmer";
 // import Grocery from "./components/Grocery";
 import "../index.css";
 const Grocery = lazy(() => import("./components/Grocery"));
+const About = lazy(() => import("./components/About"));
+const Body = lazy(() => import("./components/Body"));
 const AppLayout = () => {
+	const [userName, setuserName] = useState();
+	//authentication
+	useEffect(() => {
+		const data = {
+			name: "Raviteja ",
+		};
+		setuserName(data.name);
+	}, []);
+
 	return (
-		<div className="app">
-			<Header />
-			<Outlet />
-		</div>
+		<userContext.Provider value={{ loggedInUser: userName, setuserName }}>
+			<div className="app">
+				<Header />
+				<Outlet />
+			</div>
+		</userContext.Provider>
 	);
 };
 const AppRouter = createBrowserRouter([
@@ -26,11 +39,19 @@ const AppRouter = createBrowserRouter([
 		children: [
 			{
 				path: "/",
-				element: <Body />,
+				element: (
+					<Suspense>
+						<Body />
+					</Suspense>
+				),
 			},
 			{
 				path: "/about",
-				element: <About />,
+				element: (
+					<Suspense>
+						<About />
+					</Suspense>
+				),
 				errorElement: <Error />,
 			},
 

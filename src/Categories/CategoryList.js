@@ -1,12 +1,18 @@
+import { useDispatch } from "react-redux";
 import { CDN_URL } from "../Utils/constant";
 import React from "react";
-const CategoryList = ({ Items }) => {
-	console.log(Items);
+import { addItem } from "../StoreRE/CartSlice";
+
+const CategoryList = ({ Listitems }) => {
+	const dispatch = useDispatch();
+	const HandleAddItem = (item) => {
+		dispatch(addItem(item));
+	};
 	return (
 		<div>
-			{Items.map((item) => (
+			{Listitems.map((item, index) => (
 				<div
-					key={item.card.info.id}
+					key={`${item.card.info.id}-${index}`}
 					className="p-2 m-2  border-gray-400 border-b-2 text-left flex justify-between">
 					<div className="w-9/12">
 						<div className="py-2">
@@ -23,7 +29,9 @@ const CategoryList = ({ Items }) => {
 					</div>
 					<div className="w-3/12 p-4">
 						<div className="absolute">
-							<button className="p-2 mx-16 rounded-lg bg-white shadow-lg font-bold text-green-500 ">
+							<button
+								onClick={() => HandleAddItem(item)}
+								className="p-2 mx-16 rounded-lg bg-white shadow-lg font-bold text-green-500">
 								Add +
 							</button>
 						</div>

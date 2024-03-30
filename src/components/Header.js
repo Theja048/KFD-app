@@ -45,7 +45,7 @@ const Header = () => {
 						<Link to={"/about"}>About</Link>{" "}
 					</li>
 					<li className="px-4">
-						<Link to={"/contactus"}>Contact Us</Link>{" "}
+						<Link to={"/contact"}>Contact Us</Link>{" "}
 					</li>
 					<li className="px-4 font-bold text-black">{loggedInUser}</li>
 				</ul>

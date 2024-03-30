@@ -29,8 +29,9 @@ class About extends Component {
 					</userContext.Consumer>
 				</div>
 				<UserClass
-					name={"Kiddo (class base)"}
-					Location={"Hyderabad (class base)"}
+					name={"Raviteja"}
+					Location={"Hyderabad"}
+					Role={"Full Stack Web developer"}
 				/>
 			</div>
 		);

@@ -3,8 +3,9 @@
 	"version": "1.0.0",
 	"description": "online food delivery app",
 	"main": "app.js",
+	"proxy": "http://localhost:1234/",
 	"scripts": {
-		"proxy": "http://localhost:1234",
+		"proxy": "http://localhost:1234/",
 		"start": "parcel index.html",
 		"build": "parcel build index.html",
 		"test": "jest"

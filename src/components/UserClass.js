@@ -13,11 +13,11 @@ class UserClass extends React.Component {
 	}
 	render() {
 		console.log("Render Child");
-		const { name, Location } = this.props;
+		const { name, Location, Role } = this.props;
 		const { count } = this.state;
 		return (
 			<div className="user">
-				<h1>{count}</h1>
+				{/* <h1>{count}</h1>
 				<button
 					onClick={() => {
 						this.setState({
@@ -25,9 +25,10 @@ class UserClass extends React.Component {
 						});
 					}}>
 					click
-				</button>
+				</button> */}
 				<h2>name:{name}</h2>
 				<h2>Location:{Location}</h2>
+				<h2>{Role}</h2>
 			</div>
 		);
 	}

@@ -6,7 +6,7 @@ import userContext from "./Utils/userContext";
 import Error from "./components/Error";
 import ContactUs from "./components/ContactUs";
 import RestaurantMenu from "./components/RestaurantMenu";
-import { Shimmer } from "./components/Shimmer";
+
 import { Provider } from "react-redux";
 import "../index.css";
 import AppStore from "./StoreRE/AppStore";
@@ -21,7 +21,7 @@ const AppLayout = () => {
 	//authentication
 	useEffect(() => {
 		const data = {
-			name: "Raviteja ",
+			name: "UserName",
 		};
 		setuserName(data.name);
 	}, []);

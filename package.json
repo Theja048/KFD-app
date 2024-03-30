@@ -2,7 +2,6 @@
 	"name": "kfdapp",
 	"version": "1.0.0",
 	"description": "online food delivery app",
-	"main": "app.js",
 	"proxy": "http://localhost:1234/",
 	"scripts": {
 		"proxy": "http://localhost:1234/",
